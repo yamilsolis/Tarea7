@@ -1,0 +1,41 @@
+package tarea8;
+
+import java.util.Scanner;
+
+public class Principal {
+    
+    public static void main (String[] args) {
+    
+        //Imprime el mensaje solicitando el numero de discos.
+        System.out.println("Elige un numero mayor a 1. No te recomiendo numeros mayores a 10\nNumero de discos para el juego: ");
+        
+        //Creacion de un objeto de la clase Scanner para entrada de datos por teclado.
+        //El metodo nextInt escanea el siguiente elemento tecleado como de tipo entero.
+        Scanner entradanumero = new Scanner(System.in);
+        int numerodediscos;
+        numerodediscos = entradanumero.nextInt();
+        
+        //Implementacion del metodo torresDeHanoi con argumentos int, int, int, int. La variable numerodediscos es int por el metodo nextInt();
+        torresDeHanoi(numerodediscos,1,2,3);
+    
+    }
+    
+    public static void torresDeHanoi(int numerodediscos, int torre1, int torre2, int torre3) {
+
+        //Comienzo del ciclo recursivo. La salida se produce cuando el valor de numerodediscos es igual a 1, cuyo caso es con todos los discos en la tercer torre.
+        if(numerodediscos==1) {
+
+            System.out.println("Mover el disco de la torre " + torre1 + " a la torre " + torre3);
+
+        } else {
+
+            //Recursividad. Llamada al mismo metodo torresDeHanoi. Aqui se realiza el desplazamiento entre las torres.
+            torresDeHanoi(numerodediscos-1, torre1, torre3, torre2);
+            System.out.println("Mover el disco de la torre "+ torre1 + " a la torre " + torre3);
+            torresDeHanoi(numerodediscos-1, torre2, torre1, torre3);
+
+        }
+    
+    }
+
+}
